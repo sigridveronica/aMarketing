@@ -1,0 +1,28 @@
+name: Update Database
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update_database:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        pip install gspread oauth2client
+
+    - name: Run Python script
+      run: python script.py
+      env:
+        SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
