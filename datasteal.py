@@ -11,7 +11,7 @@ creds = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', sco
 client = gspread.authorize(creds)
 
 # Open the spreadsheet
-spreadsheet = client.open_by_url('YOUR_SPREADSHEET_URL')
+spreadsheet = client.open_by_url('https://docs.google.com/spreadsheets/d/1rZHxh0yrma_r6HTWMx0m3RFVyicsW5ei52xaNZ-RsyQ/edit?usp=sharing')
 worksheet = spreadsheet.get_worksheet(0)  # Assuming the data is in the first sheet
 
 # Open the database file to append the text
